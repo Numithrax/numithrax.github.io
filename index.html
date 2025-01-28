@@ -1,10 +1,9 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+    <title>Solo Leveling Fan Site</title>
     <style>
         * {
             margin: 0;
@@ -15,18 +14,21 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #fff;
+            background-color: #0B1622;
         }
 
         header {
-            background-color: #2c3e50;
-            color: white;
+            background-color: rgba(44, 62, 80, 0.8);
             text-align: center;
-            padding: 2rem;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(5px);
         }
 
         nav {
-            background-color: #34495e;
             padding: 1rem;
         }
 
@@ -42,25 +44,46 @@
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         nav a:hover {
-            background-color: #2c3e50;
+            background-color: #4F9CE2;
+            color: #0B1622;
+        }
+
+        .cover-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cover-container svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         main {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .hero {
             text-align: center;
             padding: 3rem 1rem;
-            background-color: #f5f6fa;
+            background-color: rgba(27, 40, 56, 0.8);
             border-radius: 8px;
             margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(79, 156, 226, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .features {
@@ -72,24 +95,32 @@
 
         .feature-card {
             padding: 1.5rem;
-            border: 1px solid #ddd;
+            background-color: rgba(27, 40, 56, 0.8);
+            border: 1px solid #4F9CE2;
             border-radius: 8px;
             text-align: center;
+            transition: transform 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(79, 156, 226, 0.3);
         }
 
         .feature-card h3 {
-            color: #2c3e50;
+            color: #4F9CE2;
             margin-bottom: 1rem;
         }
 
         footer {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.8);
             color: white;
             text-align: center;
             padding: 1rem;
-            position: fixed;
-            bottom: 0;
+            position: relative;
             width: 100%;
+            backdrop-filter: blur(5px);
         }
 
         @media (max-width: 768px) {
@@ -102,47 +133,134 @@
             .features {
                 grid-template-columns: 1fr;
             }
+
+            .cover-container svg {
+                height: 60vh;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Добро пожаловать на мой сайт</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О сайте</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#about">О нас</a></li>
-            <li><a href="#services">Услуги</a></li>
-            <li><a href="#contact">Контакты</a></li>
-        </ul>
-    </nav>
+    <div class="cover-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+            <!-- Градиентный фон -->
+            <defs>
+                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#0B1622;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1B2838;stop-opacity:1" />
+                </linearGradient>
+                
+                <!-- Свечение для текста -->
+                <filter id="blueGlow">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feFlood flood-color="#4F9CE2" flood-opacity="0.5" />
+                    <feComposite in2="blur" operator="in" />
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+
+                <!-- Свечение для фигуры -->
+                <filter id="purpleGlow">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feFlood flood-color="#9B4FE2" flood-opacity="0.3" />
+                    <feComposite in2="blur" operator="in" />
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Фон -->
+            <rect width="800" height="400" fill="url(#bgGradient)" />
+            
+            <!-- Декоративные элементы -->
+            <path d="M 400,50 L 700,200 L 400,350 L 100,200 Z" 
+                  fill="none" 
+                  stroke="#6E4FE2" 
+                  stroke-width="2"
+                  filter="url(#purpleGlow)" 
+                  opacity="0.3" />
+                  
+            <!-- Внутренний ромб -->
+            <path d="M 400,100 L 600,200 L 400,300 L 200,200 Z" 
+                  fill="none" 
+                  stroke="#4F9CE2" 
+                  stroke-width="3"
+                  opacity="0.5" />
+
+            <!-- Текст -->
+            <text x="400" y="210" 
+                  font-family="Arial Black, sans-serif" 
+                  font-size="48" 
+                  fill="#FFFFFF"
+                  text-anchor="middle"
+                  filter="url(#blueGlow)"
+                  style="font-weight: bold;">
+                SOLO LEVELING
+            </text>
+            
+            <!-- Подзаголовок -->
+            <text x="400" y="250" 
+                  font-family="Arial, sans-serif" 
+                  font-size="20" 
+                  fill="#4F9CE2"
+                  text-anchor="middle"
+                  opacity="0.8">
+                ARISE
+            </text>
+
+            <!-- Декоративные линии -->
+            <line x1="300" y1="270" x2="500" y2="270" 
+                  stroke="#4F9CE2" 
+                  stroke-width="1"
+                  opacity="0.5" />
+            
+            <!-- Световые эффекты -->
+            <circle cx="400" cy="200" r="150" 
+                    fill="url(#bgGradient)" 
+                    filter="url(#purpleGlow)"
+                    opacity="0.1" />
+        </svg>
+    </div>
 
     <main>
         <section class="hero">
-            <h2>Создайте что-то удивительное</h2>
-            <p>Это пример простого адаптивного сайта, который можно разместить на GitHub Pages</p>
+            <h2>Добро пожаловать в мир Solo Leveling</h2>
+            <p>Погрузитесь в историю становления сильнейшего охотника</p>
         </section>
 
         <section class="features">
             <div class="feature-card">
-                <h3>Особенность 1</h3>
-                <p>Описание первой особенности вашего проекта или услуги.</p>
+                <h3>Новости</h3>
+                <p>Последние обновления и новости из мира Solo Leveling.</p>
             </div>
             <div class="feature-card">
-                <h3>Особенность 2</h3>
-                <p>Описание второй особенности вашего проекта или услуги.</p>
+                <h3>Галерея</h3>
+                <p>Коллекция артов и изображений из манхвы.</p>
             </div>
             <div class="feature-card">
-                <h3>Особенность 3</h3>
-                <p>Описание третьей особенности вашего проекта или услуги.</p>
+                <h3>Обсуждения</h3>
+                <p>Присоединяйтесь к обсуждению новых глав и теорий.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+        <p>&copy; 2025 Solo Leveling Fan Site. Все права защищены.</p>
     </footer>
 </body>
 </html>
